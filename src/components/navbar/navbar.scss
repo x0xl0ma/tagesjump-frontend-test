@@ -1,0 +1,22 @@
+$font-family: "SF UI Text", sans-serif;
+$fony-size: 1rem;
+$line-height: 16px;
+$font-weight: 400;
+
+ul.crumbs {
+  padding: 0;
+  margin: 32px 0;
+  list-style: none;
+}
+
+ul.crumbs li {
+  display: inline;
+  font-size: $fony-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: #828282;
+}
+
+ul.crumbs li:last-child {
+  color: #000000;
+}

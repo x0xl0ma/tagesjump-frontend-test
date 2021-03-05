@@ -1,0 +1,97 @@
+$line-height: 22px;
+$letter-spacing: 0.02em;
+$font-size: 1rem;
+
+.product__card {
+  width: 336px;
+  height: 352px;
+  margin-bottom: 40px;
+  margin-right: 48px;
+  border: 1px solid #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  font-family: "SF UI Text", sans-serif;
+}
+
+.sale {
+  position: absolute;
+  width: 81px;
+  height: 24px;
+  left: 0px;
+  top: 8px;
+  background: #eb5757;
+  color: #ffff;
+  font-family: "SF Pro Display", sans-serif;
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 0.87rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.product__cart__image {
+  width: 238px;
+  height: 237px;
+  margin: auto;
+}
+
+.product__info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  margin-bottom: 9px;
+}
+
+.product__code {
+  color: #888888;
+  font-size: 0.625rem;
+  line-height: 14px;
+  letter-spacing: $letter-spacing;
+}
+
+.product__name {
+  counter-reset: #0000;
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  margin-top: 5.8px;
+}
+
+.product__prices {
+  display: flex;
+}
+
+.old__price {
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  text-decoration-line: line-through;
+  color: #888888;
+}
+
+.current__price {
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon__container {
+  align-self: flex-end;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.chart {
+  margin-right: 28px;
+}
+
+.favorite {
+  margin-right: 13px;
+}

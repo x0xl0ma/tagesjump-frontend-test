@@ -1,0 +1,21 @@
+h1 {
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 2.25rem;
+  line-height: 48px;
+  color: #000000;
+  font-weight: 600;
+  font-feature-settings: "ss04" on;
+}
+
+.wrapper__for__selects {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 41px;
+  flex-wrap: wrap;
+}
+
+.card__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
