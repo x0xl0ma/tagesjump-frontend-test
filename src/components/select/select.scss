@@ -1,34 +1,33 @@
 $font-family: "SF Pro Display", sans-serif;
 $letter-spacing: 0.03em;
 
-.select__wrapper {
-  display: flex;
-  flex-direction: column;
+.select {
   margin-right: 24px;
 }
 
-.label {
+.select__label{
+  display: flex;
+  flex-direction: column;
+}
+
+.select__label-text {
   font-family: $font-family;
   font-size: 0.75rem;
-  line-height: 18px;
+  line-height: 150%;
   color: #4f4f4f;
   margin-bottom: 6px;
   padding-left: 10px;
   letter-spacing: $letter-spacing;
 }
 
-select {
+.select__body {
   width: 288px;
   height: 40px;
   background: #f2f2f2;
   font-family: $font-family;
   letter-spacing: $letter-spacing;
   font-size: 0.87rem;
-  line-height: 21px;
+  line-height: 150%;
   padding: 5px;
-  border: none;
-}
-
-select:focus {
   border: none;
 }

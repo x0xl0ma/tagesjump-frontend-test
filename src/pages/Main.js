@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "../components/productCard/ProductCard";
 import Select from "../components/select/Select";
-import products from "../data/items.json";
+import data from "../data/items.json";
+import {
+  optionsForSelectPrice,
+  labelForPriceSelect,
+  optionsForSelectMaterial,
+  labelForMaterialSelect,
+  findItem,
+  addItemToStorage,
+  removeItemFromStorage,
+} from "../utils";
 
 import "./main.scss";
 
-const optionsForSelectPrice = [
-  { label: "Цена по возрастанию", value: "asc" },
-  { label: "Цена по убыванию", value: "desc" },
-];
-const labelForPriceSelect = "Сортировать по:";
-
-const optionsForSelectMaterial = [
-  { label: "Не выбрано", value: 0 },
-  { label: "Дерево", value: 1 },
-  { label: "Металл", value: 2 },
-];
-const labelForMaterialSelect = "Материал";
-
 const Main = () => {
+  const [products] = useState(data);
   const [direction, setDirection] = useState("asc");
   const [material, setMaterial] = useState(0);
   const [favorites, setFavorites] = useState([]);
@@ -41,20 +38,13 @@ const Main = () => {
 
   const filteredAndSortedData = sortedData.filter(filterByMaterial);
 
-  const findItem = (id) => {
-    if (localStorage.getItem(id)) {
-      return true;
-    }
-    return false;
-  };
-
   const chartHandler = (item) => {
     const chartItem = `${item.id}chart`;
     if (!findItem(chartItem)) {
-      localStorage.setItem(chartItem, item.name);
+      addItemToStorage(chartItem, item.name);
       setChart([...chart, chartItem]);
     } else {
-      localStorage.removeItem(chartItem);
+      removeItemFromStorage(chartItem);
       const updatedChart = chart.filter((item) => item !== chartItem);
       setChart(updatedChart);
     }
@@ -63,25 +53,29 @@ const Main = () => {
   const favoritesHandler = (item) => {
     const favItem = `${item.id}favorite`;
     if (!findItem(favItem)) {
-      localStorage.setItem(favItem, item.name);
+      addItemToStorage(favItem, item.name);
       setFavorites([...favorites, favItem]);
     } else {
-      localStorage.removeItem(favItem);
+      removeItemFromStorage(favItem);
       const updatedFavorites = favorites.filter((fav) => fav !== favItem);
       setFavorites(updatedFavorites);
     }
   };
 
   useEffect(() => {
-    setFavorites(Object.keys(localStorage).filter((item) => item.includes('favorite')));
-    setChart(Object.keys(localStorage).filter((item) => item.includes('chart')));
+    setFavorites(
+      Object.keys(localStorage).filter((item) => item.includes("favorite"))
+    );
+    setChart(
+      Object.keys(localStorage).filter((item) => item.includes("chart"))
+    );
   }, []);
 
   return (
     <main>
       <section>
-        <h1>Комплекты стеллажных систем</h1>
-        <div className="wrapper__for__selects">
+        <h1 className="main-title">Комплекты стеллажных систем</h1>
+        <div className="selects">
           <Select
             label={labelForPriceSelect}
             options={optionsForSelectPrice}
@@ -95,7 +89,7 @@ const Main = () => {
             selectedOption={material}
           />
         </div>
-        <div className="card__wrapper">
+        <div className="products">
           {filteredAndSortedData.map((product) => (
             <ProductCard
               product={product}

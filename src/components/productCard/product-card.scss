@@ -1,26 +1,48 @@
-$line-height: 22px;
+$line-height: 140%;
 $letter-spacing: 0.02em;
 $font-size: 1rem;
 
-.product__card {
-  width: 336px;
-  height: 352px;
+.products__card {
+  width: calc(25% - 36px);
+  min-height: 352px;
   margin-bottom: 40px;
-  margin-right: 48px;
-  border: 1px solid #eeeeee;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: relative;
-  font-family: "SF UI Text", sans-serif;
 }
 
-.sale {
+@media (max-width: 1450px) {
+  .products__card {
+    width: calc(33.33% - 32px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .products__card {
+    width: calc(50% - 24px);
+  }
+}
+
+@media (max-width: 700px) {
+  .products__card {
+    width: 100%;
+  }
+}
+
+.product {
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  font-family: "SF UI Text", sans-serif;
+  padding: 9px 12px;
+}
+
+.product__sale-label {
   position: absolute;
-  width: 81px;
-  height: 24px;
   left: 0px;
   top: 8px;
+  box-sizing: border-box;
+  padding: 3px 18px;
   background: #eb5757;
   color: #ffff;
   font-family: "SF Pro Display", sans-serif;
@@ -31,17 +53,17 @@ $font-size: 1rem;
   text-align: center;
 }
 
-.product__cart__image {
+.product__image {
   width: 238px;
-  height: 237px;
-  margin: auto;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .product__info {
   display: flex;
   flex-direction: column;
-  margin-left: 12px;
-  margin-bottom: 9px;
 }
 
 .product__code {
@@ -52,10 +74,11 @@ $font-size: 1rem;
 }
 
 .product__name {
-  counter-reset: #0000;
+  color: #000000;
   font-size: $font-size;
   line-height: $line-height;
   letter-spacing: $letter-spacing;
+  font-weight: 500;
   margin-top: 5.8px;
 }
 
@@ -63,35 +86,39 @@ $font-size: 1rem;
   display: flex;
 }
 
-.old__price {
+.product__old-price {
   font-size: $font-size;
   letter-spacing: $letter-spacing;
   line-height: $line-height;
   text-decoration-line: line-through;
   color: #888888;
+  margin-right: 3px;
 }
 
-.current__price {
+.product__current-price {
   font-size: $font-size;
   letter-spacing: $letter-spacing;
   line-height: $line-height;
 }
 
-.wrapper {
+.product__inner {
   display: flex;
   justify-content: space-between;
 }
 
-.icon__container {
+.product__actions {
   align-self: flex-end;
-  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.button {
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
 }
 
 .chart {
   margin-right: 28px;
-}
 
-.favorite {
-  margin-right: 13px;
 }

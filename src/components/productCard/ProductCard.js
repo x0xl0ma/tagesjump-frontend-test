@@ -14,63 +14,62 @@ const ProductCard = ({
   chart,
   chartHandler,
 }) => {
-  const { code, productName, price, image, id } = product;
+  const { code, name, price, image, id } = product;
+
   const { old_price, current_price } = price;
 
   return (
-    <div className="product__card">
-      {old_price ? <div className="sale">Скидка</div> : null}
-      <img src={image.url} alt="" className="product__card__image" />
-      <div className="wrapper">
+    <div className="product products__card">
+      {old_price ? <div className="product__sale-label">Скидка</div> : null}
+      <img src={image.url} alt="" className="product__image" />
+      <div className="product__inner">
         <div className="product__info">
-          <span className="product__code">{code}</span>
-          <span>{productName}</span>
+          <div className="product__code">{code}</div>
+          <div className="product__name">{name}</div>
           {old_price ? (
             <div className="product__prices">
-              <span className="old__price">{old_price}&#8381;</span>&nbsp;
-              <span className="current__price">
+              <span className="product__old-price">{old_price}&#8381;</span>
+              <span className="product__current-price">
                 {Math.round(current_price)}&#8381;
               </span>
             </div>
           ) : (
-            <span className="current__price">{current_price}&#8381;</span>
+            <span className="product__current-price">
+              {Math.round(current_price)}&#8381;
+            </span>
           )}
         </div>
-        <div className="icon__container">
+        <div className="product__actions">
           {chart.includes(`${id}chart`) ? (
-            <img
-              src={addedToChart}
-              alt="Добавить в корзину"
-              title="Добавить в корзину"
-              className="chart"
+            <button
+              className="button chart"
               onClick={() => chartHandler(product)}
-            />
+            >
+              <img src={addedToChart} alt="" />
+            </button>
           ) : (
-            <img
-              src={chartIcon}
-              alt="Убрать из корзины"
-              title="Убрать из корзины"
-              className="chart"
+            <button
+              className="button chart"
               onClick={() => chartHandler(product)}
-            />
+            >
+              <img src={chartIcon} alt="" />
+            </button>
           )}
 
           {favorites.includes(`${id}favorite`) ? (
-            <img
-              src={favorite}
-              alt="Убрать из избранного"
-              title="Убрать из избранного"
-              className="favorite"
+            <button
+              className="button"
               onClick={() => favoritesHandler(product)}
-            />
+            >
+              <img src={favorite} alt="" />
+            </button>
           ) : (
-            <img
-              src={addToFavorites}
-              alt="Добавить в избранное"
-              title="Добавить в избранное"
-              className="favorite"
+            <button
+              className="button"
               onClick={() => favoritesHandler(product)}
-            />
+            >
+              <img src={addToFavorites} alt="" />
+            </button>
           )}
         </div>
       </div>

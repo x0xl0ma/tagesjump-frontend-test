@@ -8,15 +8,21 @@ const Select = ({ label, options, onChanged, selectedOption }) => {
   };
 
   return (
-    <div className="select__wrapper">
-      <span className="label">{label}</span>
-      <select onChange={handleChange} value={selectedOption}>
-        {options.map((option, index) => (
-          <option value={option.value} key={index}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+    <div className="select">
+      <label className="select__label">
+        <span className="select__label-text">{label}</span>
+        <select
+          onChange={handleChange}
+          value={selectedOption}
+          className="select__body"
+        >
+          {options.map((option, index) => (
+            <option value={option.value} key={index}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </label>
     </div>
   );
 };
